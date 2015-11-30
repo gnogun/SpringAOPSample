@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="com.gno.sample"></context:component-scan>
+	
+	<aop:aspectj-autoproxy />
+	
+
+	<bean id="simpleCalcService" class="com.gno.sample.service.SimpleCalcServiceImpl"></bean>
+	<bean id="calcDao" class="com.gno.sample.dao.CalcDaoImpl"></bean>
+
+	<bean id="loggingAspect" class="com.gno.sample.aop.SimpleAopAspectXML"></bean>
+	
+	
+	<!--
+		aspect: 관점. 걍 aspect에 이용할 클래스로 라고 지정
+		advice: 어느 시점에 실행 될지 정하는 구분자 (before, after, throw, around)
+		pointcut: 쳐다보고 있는 기준 함수 정의 
+		expression: pointcut 에 입력하는 문법 (<리턴타입> <클래스>.<메소드><(매개변수)>)
+	 
+	 -->
+	
+	
+	<aop:config>
+		<aop:aspect id="aspect" ref="loggingAspect">
+			<aop:pointcut expression="execution(* com.gno.sample.dao.CalcDAO.*(..))" id="pointCut"/>
+			
+			<aop:before method="before" pointcut-ref="pointCut"/>
+			<aop:after method="after" pointcut-ref="pointCut"/>
+		</aop:aspect>
+	</aop:config>
+	
+	
+</beans>
