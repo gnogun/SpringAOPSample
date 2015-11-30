@@ -11,10 +11,8 @@ import static org.junit.Assert.fail;
 
 import com.gno.sample.service.SimpleCalcService;
 
-@ContextConfiguration(locations={"file:src/main/resources/aop-context.xml"})
-/*
+//@ContextConfiguration(locations={"file:src/main/resources/aop-context.xml"})
 @ContextConfiguration(locations={"file:src/main/resources/aop-context_xml.xml"})
-*/
 @RunWith(SpringJUnit4ClassRunner.class)
 public class AopTest {
 	
