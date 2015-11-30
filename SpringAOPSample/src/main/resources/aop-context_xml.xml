@@ -31,7 +31,7 @@
 			
 			<aop:before method="before" pointcut-ref="pointCut"/>
 			<aop:after method="after" pointcut-ref="pointCut"/>
-			<
+			
 		</aop:aspect>
 	</aop:config>
 	
