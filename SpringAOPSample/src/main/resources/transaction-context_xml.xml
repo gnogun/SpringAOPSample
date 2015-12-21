@@ -22,9 +22,24 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- 트랜잭션매니저 설정 end -->
 	
-	<bean id="txService" class="com.gno.sample.tx.service.TxServiceImplAnno"></bean>
+	
+	<aop:config>
+		<aop:pointcut id="serviceMethods"
+			expression="execution(* *..TxService.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods" />
+	</aop:config>
+	
+	
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
+	
+	<bean id="txService" class="com.gno.sample.tx.service.TxServiceImpl"></bean>
 	
 	
 	

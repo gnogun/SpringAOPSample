@@ -16,16 +16,4 @@ public class SimpleCalcServiceImpl implements SimpleCalcService {
 		return calcDao.add(val1, val2);
 	}
 
-	@Override
-	public int addTx() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	@Override
-	public int addTx(TxTest test) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }
