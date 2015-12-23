@@ -52,4 +52,4 @@ public class TxTest {
 	
 	
 }
->>>>>>> branch 'master' of https://github.com/gnogun/SpringAOPSample.git
+
