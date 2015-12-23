@@ -22,17 +22,18 @@ public class ProjectTest {
 	@Autowired
 	private PersonRepository repo;
 	
-	@Autowired
-	private TxService service;
+//	@Autowired
+//	private TxService service;
 	
 	@Test
+//	@Transactional
+//	@Rollback(false)
 	public void projectMake(){
 		Person person = new Person("gno1", "gnogun@naver.com1", "gno1");
 		Person person2 = new Person("gno2", "gnogun@naver.com1", "gno1");
 		
 		repo.save(person);
 		repo.save(person2);
-		repo.save(person);
 		
 //		service.addTx(person);
 	}
