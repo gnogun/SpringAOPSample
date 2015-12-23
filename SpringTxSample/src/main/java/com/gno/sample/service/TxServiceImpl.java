@@ -1,17 +1,18 @@
-package com.gno.sample.tx.service;
+package com.gno.sample.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.gno.sample.dto.TxTest;
-import com.gno.sample.repository.TxTestRepository;
+import com.gno.sample.dto.Person;
+import com.gno.sample.repository.PersonRepository;
+
 
 public class TxServiceImpl implements TxService {
 
 	@Autowired
-	private TxTestRepository repository;
+	private PersonRepository repository;
 	
 	@Override
-	public int addTx(TxTest test) {
+	public int addTx(Person test) {
 		// TODO Auto-generated method stub
 		try {
 			if (test.getName().equals("wrong")) {
@@ -30,7 +31,7 @@ public class TxServiceImpl implements TxService {
 	}
 	
 	@Override
-	public int addNoTx(TxTest test) {
+	public int addNoTx(Person test) {
 		// TODO Auto-generated method stub
 		repository.save(test);
 		return 0;

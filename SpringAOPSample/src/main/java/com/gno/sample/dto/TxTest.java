@@ -1,15 +1,36 @@
 package com.gno.sample.dto;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class TxTest {
 	
+	private int idx;
 	
 	private String name;
-	private String desc;
+	private String description;
 	
-	public TxTest(String name, String desc) {
+	public TxTest() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public TxTest(String name, String description) {
 		// TODO Auto-generated constructor stub
 		this.name = name;
-		this.desc= desc;
+		this.description = description;
+	}
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	public int getIdx() {
+		return idx;
+	}
+
+	public void setIdx(int idx) {
+		this.idx = idx;
 	}
 
 	public String getName() {
@@ -20,12 +41,12 @@ public class TxTest {
 		this.name = name;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String desc) {
+		this.description = desc;
 	}
 	
 	
