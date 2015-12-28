@@ -19,22 +19,22 @@ import com.gno.sample.service.TxService;
 @ContextConfiguration("/tx_context_xml.xml")
 public class ProjectTest {
 	
-	@Autowired
-	private PersonRepository repo;
-	
 //	@Autowired
-//	private TxService service;
+//	private PersonRepository repo;
+	
+	@Autowired
+	private TxService service;
 	
 	@Test
-//	@Transactional
-//	@Rollback(false)
+	@Transactional
+	@Rollback(false)
 	public void projectMake(){
 		Person person = new Person("gno1", "gnogun@naver.com1", "gno1");
 		Person person2 = new Person("gno2", "gnogun@naver.com1", "gno1");
 		
-		repo.save(person);
-		repo.save(person2);
+//		repo.save(person);
+//		repo.save(person2);
 		
-//		service.addTx(person);
+		service.addTx(person);
 	}
 }
